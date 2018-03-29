@@ -34,4 +34,3 @@ class Manager implements ManagerContract
         $this->driver->close();
     }
 }
-
