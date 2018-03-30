@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
-use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowser﻿FactoryContract;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserFactoryContract;
 
 class Manager implements ManagerContract
 {
@@ -17,10 +17,10 @@ class Manager implements ManagerContract
 
     protected $browserFactory;
 
-    public function __construct(DriverContract $driver = null, ConsoleBrowser﻿FactoryContract $browserFactory = null)
+    public function __construct(DriverContract $driver = null, ConsoleBrowserFactoryContract $browserFactory = null)
     {
         $this->driver = $driver ?: new Chrome();
-        $this->browserFactory = $browserFactory ?: new ConsoleBrowser﻿Factory();
+        $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory();
     }
 
     public function browse(Command $command, Closure $callback): void
