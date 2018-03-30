@@ -10,11 +10,15 @@ use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
 class LaravelConsoleDuskServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+
     public function boot(): void
     {
-        Command::macro('browse', function ($callback) {
-            resolve(ManagerContract::class)->browse($this, $callback);
-        });
+        if ($this->app->runningInConsole()) {
+            Command::macro('browse', function ($callback) {
+                resolve(ManagerContract::class)->browse($this, $callback);
+            });
+        }
     }
 
     public function register(): void
@@ -22,5 +26,10 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
         $this->app->bind(ManagerContract::class, function ($app) {
             return new Manager();
         });
+    }
+
+    public function provides(): array
+    {
+        return [ManagerContract::class];
     }
 }
