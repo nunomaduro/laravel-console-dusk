@@ -7,6 +7,7 @@ namespace NunoMaduro\LaravelConsoleDusk;
 use Laravel\Dusk\Browser;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserContract;
 
 class ConsoleBrowser﻿ implements ConsoleBrowserContract
@@ -24,6 +25,11 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
     public function getOriginalBrowser(): Browser
     {
         return $this->browser;
+    }
+
+    public function getDownloads(): Collection
+    {
+        // ...
     }
 
     public function __call(string $name, array $arguments)
@@ -52,5 +58,10 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
         }
 
         return $description;
+    }
+
+    public function __destruct()
+    {
+        $this->browser->quit();
     }
 }

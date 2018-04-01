@@ -15,6 +15,8 @@ class Chrome implements DriverContract
 {
     use SupportsChrome;
 
+    protected $downloadsPath;
+
     public function open(): void
     {
         static::startChromeDriver();
@@ -30,6 +32,11 @@ class Chrome implements DriverContract
         // ..
     }
 
+    public function setDownloadsPath(string $path): void
+    {
+        $this->downloadsPath = $path;
+    }
+
     public function getDriver()
     {
         $options = (new ChromeOptions)->addArguments(
@@ -38,6 +45,8 @@ class Chrome implements DriverContract
                 '--headless',
             ]
         );
+
+        $options->setExperimentalOption('prefs', ['download.default_directory' => $this->downloadsPath]);
 
         return RemoteWebDriver::create(
             'http://localhost:9515',

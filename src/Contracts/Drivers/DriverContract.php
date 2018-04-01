@@ -10,5 +10,7 @@ interface DriverContract
 
     public function close(): void;
 
+    public function setDownloadsPath(string $path): void;
+
     public function getDriver();
 }
