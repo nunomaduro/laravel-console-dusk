@@ -6,6 +6,7 @@ namespace NunoMaduro\LaravelConsoleDusk;
 
 use Laravel\Dusk\Browser;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
@@ -19,8 +20,8 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
             $manager = resolve(ManagerContract::class);
 
             Browser::$baseUrl = config('app.url');
-            Browser::$storeScreenshotsAt = storage_path('laravel-console-dusk/screenshots');
-            Browser::$storeConsoleLogAt = storage_path('laravel-console-dusk/log');
+            Browser::$storeScreenshotsAt = $this->getPath('laravel-console-dusk/screenshots');
+            Browser::$storeConsoleLogAt = $this->getPath('laravel-console-dusk/log');
 
             Command::macro('browse', function ($callback) use ($manager) {
                 $manager->browse($this, $callback);
@@ -38,5 +39,14 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     public function provides(): array
     {
         return [ManagerContract::class];
+    }
+
+    protected function getPath(string $path): string
+    {
+        return tap(storage_path($path), function ($path) {
+            if (! File::exists($path)) {
+                File::makeDirectory($path);
+            }
+        });
     }
 }
