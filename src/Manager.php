@@ -31,6 +31,8 @@ class Manager implements ManagerContract
 
         $callback($browser);
 
+        $browser->getOriginalBrowser()->quit();
+
         $this->driver->close();
     }
 }

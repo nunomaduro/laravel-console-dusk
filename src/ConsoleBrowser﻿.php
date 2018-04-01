@@ -21,20 +21,22 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
         $this->browser = $browser;
     }
 
+    public function getOriginalBrowser(): Browser
+    {
+        return $this->browser;
+    }
+
     public function __call(string $name, array $arguments)
     {
         $description = $this->getHumanReadableMethodDescription($name, $arguments);
 
-        $this->command->task(
-            $description,
-            function () use ($name, $arguments) {
-                try {
-                    call_user_func_array([$this->browser, $name], $arguments);
-                } catch (\Throwable $e) {
-                    return false;
-                }
+        $this->command->task($description, function () use ($name, $arguments) {
+            try {
+                call_user_func_array([$this->browser, $name], $arguments);
+            } catch (\Throwable $e) {
+                return false;
             }
-        );
+        });
 
         return $this;
     }
