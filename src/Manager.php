@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
+use Throwable;
 use Illuminate\Console\Command;
 use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
@@ -29,11 +30,18 @@ class Manager implements ManagerContract
 
         $browser = $this->browserFactory->make($command, $this->driver);
 
-        $callback($browser);
+        try {
+            $callback($browser);
+        } catch (\Throwable $e) {
+        }
 
         $browser->getOriginalBrowser()
             ->quit();
 
         $this->driver->close();
+
+        if (! empty($e)) {
+            throw $e;
+        }
     }
 }

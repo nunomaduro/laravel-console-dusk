@@ -15,6 +15,8 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
 
     protected $browser;
 
+    protected $inSecret = false;
+
     public function __construct(Command $command, Browser $browser)
     {
         $this->command = $command;
@@ -26,29 +28,49 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
         return $this->browser;
     }
 
+    public function inSecret(): ConsoleBrowserContract
+    {
+        $this->inSecret = true;
+
+        return $this;
+    }
+
     public function __call(string $name, array $arguments)
     {
         $description = $this->getHumanReadableMethodDescription($name, $arguments);
 
-        $this->command->task($description, function () use ($name, $arguments) {
+        $exception = null;
+        $result = null;
+
+        $this->command->task($description, function () use ($name, $arguments, &$exception, &$result) {
             try {
-                call_user_func_array([$this->browser, $name], $arguments);
+                $result = call_user_func_array([$this->browser, $name], $arguments);
             } catch (\Throwable $e) {
+                $exception = $e;
                 return false;
             }
         });
 
-        return $this;
+        if ($exception !== null) {
+            throw $exception;
+        }
+
+        return $result instanceof Browser ? $this : $result;
     }
 
     protected function getHumanReadableMethodDescription(string $methodName, array $arguments): string
     {
         $description = Str::ucfirst(Str::lower(Str::snake($methodName, ' ')));
 
-        foreach ($arguments as $argument) {
-            if (\is_string($argument)) {
-                $description .= " {{$argument}}";
+        if (! $this->inSecret) {
+            foreach ($arguments as $argument) {
+                if (\is_string($argument)) {
+                    $description .= " <info>$argument</info>";
+                }
             }
+        } else {
+            $description .= " <info>...</info>";
+            $this->inSecret = false;
         }
 
         return $description;
