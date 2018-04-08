@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
-use Throwable;
 use Illuminate\Console\Command;
 use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;

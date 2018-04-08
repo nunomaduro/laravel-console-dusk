@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserContract;
 
-class ConsoleBrowser﻿ implements ConsoleBrowserContract
+class ConsoleBrowser implements ConsoleBrowserContract
 {
     protected $command;
 
@@ -47,6 +47,7 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
                 $result = call_user_func_array([$this->browser, $name], $arguments);
             } catch (\Throwable $e) {
                 $exception = $e;
+
                 return false;
             }
         });
@@ -69,7 +70,7 @@ class ConsoleBrowser﻿ implements ConsoleBrowserContract
                 }
             }
         } else {
-            $description .= " <info>...</info>";
+            $description .= ' <info>...</info>';
             $this->inSecret = false;
         }
 
