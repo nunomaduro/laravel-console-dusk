@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="docs/example.png" width="100%">
+    <img src="docs/example.gif" width="100%">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@
 
 ## About Laravel Console Dusk
 
-Laravel Console Dusk was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and allows the usage of [Laravel Dusk](https://github.com/laravel/dusk) in Laravel/Laravel Zero artisan commands..
+Laravel Console Dusk was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and allows the usage of [Laravel Dusk](https://github.com/laravel/dusk) in Laravel/Laravel Zero artisan commands.
 
 ## Installation
 
@@ -41,6 +41,8 @@ class VisitLaravelZeroCommand extends Command
     }
 }
 ```
+
+Check how use [Laravel Dusk here](https://github.com/laravel/dusk).
 
 ## Contributing
 
