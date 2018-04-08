@@ -44,6 +44,10 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     protected function getPath(string $path): string
     {
         return tap(storage_path("laravel-console-dusk/$path"), function ($path) {
+            if (! File::exists(storage_path("laravel-console-dusk"))) {
+                File::makeDirectory(storage_path("laravel-console-dusk"));
+            }
+
             if (! File::exists($path)) {
                 File::makeDirectory($path);
             }
