@@ -20,8 +20,8 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
             $manager = resolve(ManagerContract::class);
 
             Browser::$baseUrl = config('app.url');
-            Browser::$storeScreenshotsAt = $this->getPath('screenshots');
-            Browser::$storeConsoleLogAt = $this->getPath('log');
+            Browser::$storeScreenshotsAt = $this->getPath('laravel-console-dusk/screenshots');
+            Browser::$storeConsoleLogAt = $this->getPath('laravel-console-dusk/log');
 
             Command::macro('browse', function ($callback) use ($manager) {
                 $manager->browse($this, $callback);
@@ -32,7 +32,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ManagerContract::class, function ($app) {
-            return (new Manager())->setDownloadsPath($this->getPath('downloads'));
+            return new Manager();
         });
     }
 
@@ -43,7 +43,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
 
     protected function getPath(string $path): string
     {
-        return tap(storage_path("laravel-console-dusk/$path"), function ($path) {
+        return tap(storage_path($path), function ($path) {
             if (! File::exists($path)) {
                 File::makeDirectory($path);
             }

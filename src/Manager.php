@@ -36,11 +36,4 @@ class Manager implements ManagerContract
 
         $this->driver->close();
     }
-
-    public function setDownloadsPath(string $path): ManagerContract
-    {
-        $this->driver->setDownloadsPath($path);
-
-        return $this;
-    }
 }
