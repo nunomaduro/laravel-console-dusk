@@ -21,7 +21,7 @@ class ConsoleBrowserFactory implements ConsoleBrowserFactoryContract
     {
         $this->driver = $driver;
 
-        return new ConsoleBrowser﻿($command, new Browser($this->createWebDriver()));
+        return new ConsoleBrowser($command, new Browser($this->createWebDriver()));
     }
 
     protected function driver()
