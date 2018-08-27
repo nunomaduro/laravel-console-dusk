@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.0.5] - 2018-08-27
+### Fixes
+- Error `Class 'NunoMaduro\LaravelConsoleDusk\ConsoleBrowser﻿' not found`.
+
 ## [1.0.4] - 2018-08-26
 ### Added
 - Support to Laravel 5.7 and Laravel Dusk 4.
