@@ -17,11 +17,15 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/console-dusk.php' => config_path('console-dusk.pph'),
+                ],'config');
+
             $manager = resolve(ManagerContract::class);
 
             Browser::$baseUrl = config('app.url');
-            Browser::$storeScreenshotsAt = $this->getPath('screenshots');
-            Browser::$storeConsoleLogAt = $this->getPath('log');
+            Browser::$storeScreenshotsAt = $this->getPath(config('console-dusk.paths.screenshots'));
+            Browser::$storeConsoleLogAt = $this->getPath(config('console-dusk.paths.log'));
 
             Command::macro('browse', function ($callback) use ($manager) {
                 $manager->browse($this, $callback);
@@ -31,6 +35,8 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/console-dusk.php', 'console-dusk');
+
         $this->app->bind(ManagerContract::class, function ($app) {
             return new Manager();
         });
