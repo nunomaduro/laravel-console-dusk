@@ -28,7 +28,7 @@ class Manager implements ManagerContract
         $this->driver->open();
 
         $browser = $this->browserFactory->make($command, $this->driver);
-        if($inSecret) {
+        if ($inSecret) {
             $browser->inSecret();
         }
 

@@ -19,7 +19,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/console-dusk.php' => config_path('console-dusk.php'),
-                ],'config');
+                ], 'config');
 
             $manager = resolve(ManagerContract::class);
 
