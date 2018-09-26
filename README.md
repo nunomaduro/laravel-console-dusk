@@ -22,6 +22,39 @@ Require Laravel Console Dusk using [Composer](https://getcomposer.org):
 composer require nunomaduro/laravel-console-dusk
 ```
 
+The package provide a config file that allows you to configure some options.
+```php
+return [
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel Console Dusk Paths
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the name of screenshots and logs directory as you wish.
+    */
+    'paths' => [
+        'screenshots' => 'screenshots',
+        'log'         => 'log',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Laravel Console Dusk Secret
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the output of command.
+    | It is a boolean configuration: true for mute the output, false otherwise
+    */
+    'secret' => false,
+];
+```
+
+You can publish the config file using the following artisan command:
+```bash
+php artisan vendor:publish --provider="NunoMaduro\LaravelConsoleDusk\LaravelConsoleDuskServiceProvider" --tag="config"
+```
+
+
 ## Usage
 
 ```php
