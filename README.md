@@ -33,8 +33,8 @@ return [
     | Here you may configure the name of screenshots and logs directory as you wish.
     */
     'paths' => [
-        'screenshots' => 'screenshots',
-        'log'         => 'log',
+        'screenshots' => storage_path('laravel-console-dusk/screenshots'),
+        'log'         => storage_path('laravel-console-dusk/log'),
     ],
 
     /*
@@ -43,7 +43,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may configure the output of command.
-    | It is a boolean configuration: true for mute the output, false otherwise
+    | It is a boolean cofiguration: true for mute the output, false otherwise
     */
     'secret' => false,
 ];
