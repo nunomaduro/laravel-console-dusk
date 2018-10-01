@@ -51,7 +51,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     protected function getPath(string $path): string
     {
         return tap($path, function ($path) {
-            if(! File::exists($path)) {
+            if (! File::exists($path)) {
                 File::makeDirectory($path,0755, true);
             }
         });
