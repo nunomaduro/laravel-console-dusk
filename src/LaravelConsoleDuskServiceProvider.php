@@ -52,7 +52,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
     {
         return tap($path, function ($path) {
             if (! File::exists($path)) {
-                File::makeDirectory($path,0755, true);
+                File::makeDirectory($path, 0755, true);
             }
         });
     }
