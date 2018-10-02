@@ -23,14 +23,11 @@ class Manager implements ManagerContract
         $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory();
     }
 
-    public function browse(Command $command, Closure $callback, bool $inSecret): void
+    public function browse(Command $command, Closure $callback): void
     {
         $this->driver->open();
 
         $browser = $this->browserFactory->make($command, $this->driver);
-        if ($inSecret) {
-            $browser->inSecret();
-        }
 
         try {
             $callback($browser);

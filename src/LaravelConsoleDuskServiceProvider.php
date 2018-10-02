@@ -26,10 +26,9 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
             Browser::$baseUrl = config('app.url');
             Browser::$storeScreenshotsAt = $this->getPath(config('laravel-console-dusk.paths.screenshots'));
             Browser::$storeConsoleLogAt = $this->getPath(config('laravel-console-dusk.paths.log'));
-            $inSecret = config('laravel-console-dusk.secret');
 
-            Command::macro('browse', function ($callback) use ($manager, $inSecret) {
-                $manager->browse($this, $callback, $inSecret);
+            Command::macro('browse', function ($callback) use ($manager) {
+                $manager->browse($this, $callback);
             });
         }
     }
