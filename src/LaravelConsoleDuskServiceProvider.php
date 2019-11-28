@@ -43,7 +43,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
         });
 
         $this->commands([
-            ChromeDriverCommand::class
+            ChromeDriverCommand::class,
         ]);
     }
 
