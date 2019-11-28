@@ -8,6 +8,7 @@ use Laravel\Dusk\Browser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\Console\ChromeDriverCommand;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
 class LaravelConsoleDuskServiceProvider extends ServiceProvider
@@ -40,6 +41,10 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
         $this->app->bind(ManagerContract::class, function ($app) {
             return new Manager();
         });
+
+        $this->commands([
+            ChromeDriverCommand::class
+        ]);
     }
 
     public function provides(): array
