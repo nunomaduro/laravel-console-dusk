@@ -6,10 +6,10 @@ namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
 use Illuminate\Console\Command;
-use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
-use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
-use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserFactoryContract;
+use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
+use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
 
 class Manager implements ManagerContract
 {
