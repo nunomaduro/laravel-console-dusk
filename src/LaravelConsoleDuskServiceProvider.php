@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace NunoMaduro\LaravelConsoleDusk;
 
-use Laravel\Dusk\Browser;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Dusk\Browser;
 use Laravel\Dusk\Console\ChromeDriverCommand;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
@@ -43,7 +43,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider
         });
 
         $this->commands([
-            ChromeDriverCommand::class
+            ChromeDriverCommand::class,
         ]);
     }
 
