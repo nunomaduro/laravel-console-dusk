@@ -65,7 +65,7 @@ class ConsoleBrowser implements ConsoleBrowserContract
 
         if (! $this->inSecret) {
             foreach ($arguments as $argument) {
-                if (\is_string($argument)) {
+                if (\is_string($argument) || (\is_object($argument) && \is_callable([$argument, '__toString']))) {
                     $description .= " <info>$argument</info>";
                 }
             }
