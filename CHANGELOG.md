@@ -4,7 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [1.5.0] - 2020-01-15
+## [1.7.0] - 2020-08-17
+
+### Added
+- Support to Dusk 6
+
+### Changed
+- Require latest v5.x of Dusk
+
+## [1.6.0] - 2020-01-15
 ### Added
 - Support to Laravel 7
 
