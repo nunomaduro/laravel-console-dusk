@@ -14,11 +14,11 @@
         }
     ],
     "require": {
-        "php": "^7.1.3",
+        "php": "^7.2.5",
         "laravel/dusk": "^5.11|^6.0",
-        "illuminate/console": "5.6.*|5.7.*|5.8.*|^6.0|^7.0",
-        "illuminate/support": "5.6.*|5.7.*|5.8.*|^6.0|^7.0",
-        "nunomaduro/laravel-console-task": "^1.0"
+        "illuminate/console": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0",
+        "nunomaduro/laravel-console-task": "^1.5"
     },
     "autoload": {
         "psr-4": {
@@ -38,5 +38,7 @@
     },
     "suggest": {
         "phpunit/phpunit": "Required to perform browser test assertions."
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
