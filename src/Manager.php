@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
-use ReflectionFunction;
 use Illuminate\Console\Command;
-use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
-use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
-use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserFactoryContract;
+use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
+use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
+use ReflectionFunction;
 
 class Manager implements ManagerContract
 {
