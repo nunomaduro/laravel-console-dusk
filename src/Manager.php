@@ -44,7 +44,8 @@ class Manager implements ManagerContract
         }
     }
 
-    protected function createBrowsers($command, $callback) {
+    protected function createBrowsers($command, $callback)
+    {
         $browsers = collect();
 
         $browsersNeededFor = (new ReflectionFunction($callback))->getNumberOfParameters();
