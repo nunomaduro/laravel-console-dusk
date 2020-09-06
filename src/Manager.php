@@ -6,6 +6,8 @@ namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserFactoryContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
@@ -44,7 +46,8 @@ class Manager implements ManagerContract
         }
     }
 
-    protected function createBrowsers($command, $callback)
+    /** @return Collection<ConsoleBrowserContract> */
+    protected function createBrowsers($command, $callback): Collection
     {
         $browsers = collect();
 
