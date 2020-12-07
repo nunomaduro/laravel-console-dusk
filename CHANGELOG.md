@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.9.0] - 2020-12-07
+
+### Added
+- Support for PHP 8 ([#22](https://github.com/nunomaduro/laravel-console-dusk/pull/22))
+
 ## [1.8.0] - 2020-09-01
 
 ### Added
