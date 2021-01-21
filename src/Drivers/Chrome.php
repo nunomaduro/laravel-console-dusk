@@ -33,10 +33,10 @@ class Chrome implements DriverContract
     public function getDriver()
     {
         $options = (new ChromeOptions)->addArguments(
-            [
+            array_filter([
                 '--disable-gpu',
-                '--headless',
-            ]
+                $this->runHeadless(),
+            ])
         );
 
         return RemoteWebDriver::create(
@@ -52,5 +52,10 @@ class Chrome implements DriverContract
     public function __destruct()
     {
         $this->close();
+    }
+
+    protected function runHeadless(): ?string
+    {
+        return config('laravel-console-dusk.headless', false) && !app()->isProduction() ? null : '--headless';
     }
 }
