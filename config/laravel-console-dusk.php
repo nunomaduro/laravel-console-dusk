@@ -13,8 +13,8 @@ return [
         'log'         => storage_path('laravel-console-dusk/log'),
     ],
     /*
-    | When false it will run the Chrome window in Headless mode. Within
-    | Production it will be forced to false.
+    | When false it will show a Chrome window while running. Within production
+    | it will be forced to run in headless mode.
     */
     'headless' => true
 ];
