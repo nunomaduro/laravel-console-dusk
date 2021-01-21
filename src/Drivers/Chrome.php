@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk\Drivers;
 
 use Closure;
-use Laravel\Dusk\Chrome\SupportsChrome;
 use Facebook\WebDriver\Chrome\ChromeOptions;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Laravel\Dusk\Chrome\SupportsChrome;
 use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 
 class Chrome implements DriverContract
