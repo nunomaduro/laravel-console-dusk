@@ -56,6 +56,6 @@ class Chrome implements DriverContract
 
     protected function runHeadless(): ?string
     {
-        return config('laravel-console-dusk.headless', false) && !app()->isProduction() ? null : '--headless';
+        return config('laravel-console-dusk.headless', false) && ! app()->isProduction() ? null : '--headless';
     }
 }
