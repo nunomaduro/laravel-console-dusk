@@ -5,15 +5,20 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk\Drivers;
 
 use Closure;
-use Facebook\WebDriver\Chrome\ChromeOptions;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Laravel\Dusk\Chrome\SupportsChrome;
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
 use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 
 class Chrome implements DriverContract
 {
     use SupportsChrome;
+
+    public function __destruct()
+    {
+        $this->close();
+    }
 
     public function open(): void
     {
@@ -32,7 +37,7 @@ class Chrome implements DriverContract
 
     public function getDriver()
     {
-        $options = (new ChromeOptions)->addArguments(
+        $options = (new ChromeOptions())->addArguments(
             array_filter([
                 '--disable-gpu',
                 $this->runHeadless(),
@@ -49,13 +54,11 @@ class Chrome implements DriverContract
         );
     }
 
-    public function __destruct()
-    {
-        $this->close();
-    }
-
+    /**
+     * Running around headless, or not..
+     */
     protected function runHeadless(): ?string
     {
-        return config('laravel-console-dusk.headless', false) && ! app()->isProduction() ? null : '--headless';
+        return ! config('laravel-console-dusk.headless', true) && ! app()->isProduction() ? null : '--headless';
     }
 }
