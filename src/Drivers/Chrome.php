@@ -15,11 +15,6 @@ class Chrome implements DriverContract
 {
     use SupportsChrome;
 
-    public function __destruct()
-    {
-        $this->close();
-    }
-
     public function open(): void
     {
         static::startChromeDriver();
@@ -60,5 +55,10 @@ class Chrome implements DriverContract
     protected function runHeadless(): ?string
     {
         return ! config('laravel-console-dusk.headless', true) && ! app()->isProduction() ? null : '--headless';
+    }
+
+    public function __destruct()
+    {
+        $this->close();
     }
 }

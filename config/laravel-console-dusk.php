@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Laravel Console Dusk Paths
@@ -22,4 +23,5 @@ return [
     | it will be forced to run in headless mode.
     */
     'headless' => true,
+
 ];
