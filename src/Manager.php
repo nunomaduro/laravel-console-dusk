@@ -6,10 +6,13 @@ namespace NunoMaduro\LaravelConsoleDusk;
 
 use Closure;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserFactoryContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 use NunoMaduro\LaravelConsoleDusk\Drivers\Chrome;
+use ReflectionFunction;
 
 class Manager implements ManagerContract
 {
@@ -27,20 +30,33 @@ class Manager implements ManagerContract
     {
         $this->driver->open();
 
-        $browser = $this->browserFactory->make($command, $this->driver);
+        $browsers = $this->createBrowsers($command, $callback);
 
         try {
-            $callback($browser);
+            $callback(...$browsers->all());
         } catch (\Throwable $e) {
         }
 
-        $browser->getOriginalBrowser()
-            ->quit();
+        $browsers->each->quit();
 
         $this->driver->close();
 
         if (! empty($e)) {
             throw $e;
         }
+    }
+
+    /** @return Collection<ConsoleBrowserContract> */
+    protected function createBrowsers($command, $callback): Collection
+    {
+        $browsers = collect();
+
+        $browsersNeededFor = (new ReflectionFunction($callback))->getNumberOfParameters();
+
+        for ($i = 0; $i < $browsersNeededFor; $i++) {
+            $browsers->push($this->browserFactory->make($command, $this->driver));
+        }
+
+        return $browsers;
     }
 }
