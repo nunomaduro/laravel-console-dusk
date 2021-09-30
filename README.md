@@ -27,6 +27,15 @@ The package provide a config file that allows you to configure some options.
 return [
     /*
     |--------------------------------------------------------------------------
+    | Remote Web Driver URL
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the URL of the remote web driver host.
+    */
+    'url' => 'http://localhost:9515',
+
+    /*
+    |--------------------------------------------------------------------------
     | Laravel Console Dusk Paths
     |--------------------------------------------------------------------------
     |
