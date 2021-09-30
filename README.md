@@ -30,7 +30,7 @@ return [
     | Remote Web Driver URL
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the URL of the remote web driver host.
+    | Here you may configure the URL of the remote web driver.
     */
     'url' => 'http://localhost:9515',
 
