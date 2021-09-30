@@ -40,7 +40,7 @@ class Chrome implements DriverContract
         );
 
         return RemoteWebDriver::create(
-            'http://localhost:9515',
+            config('laravel-console-dusk.url'),
             DesiredCapabilities::chrome()
                 ->setCapability(
                     ChromeOptions::CAPABILITY,
