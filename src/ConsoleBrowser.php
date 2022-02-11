@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Laravel\Dusk\Browser;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ConsoleBrowserContract;
 
+/** @mixin Browser */
 class ConsoleBrowser implements ConsoleBrowserContract
 {
     protected $command;
