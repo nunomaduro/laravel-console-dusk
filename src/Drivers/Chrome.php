@@ -33,10 +33,10 @@ class Chrome implements DriverContract
     public function getDriver()
     {
         $options = (new ChromeOptions())->addArguments(
-            array_filter([
-                '--disable-gpu',
-                $this->runHeadless(),
-            ])
+            array_filter(array_merge(
+                config('laravel-console-dusk.driver.chrome.options', []),
+                [$this->runHeadless()]
+            ))
         );
 
         return RemoteWebDriver::create(

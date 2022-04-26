@@ -24,4 +24,18 @@ return [
     */
     'headless' => true,
 
+    /*
+    | --------------------------------------------------------------------------
+    | Driver Configuration
+    | --------------------------------------------------------------------------
+    |
+    | Here you may pass options to the browser driver being automated.
+    */
+    'driver' => [
+        'chrome' => [
+            'options' => [
+                '--disable-gpu'
+            ]
+        ]
+    ]
 ];
