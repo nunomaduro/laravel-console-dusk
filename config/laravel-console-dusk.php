@@ -34,8 +34,8 @@ return [
     'driver' => [
         'chrome' => [
             'options' => [
-                '--disable-gpu'
-            ]
-        ]
-    ]
+                '--disable-gpu',
+            ],
+        ],
+    ],
 ];
