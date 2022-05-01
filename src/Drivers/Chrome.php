@@ -40,7 +40,7 @@ class Chrome implements DriverContract
         );
 
         return RemoteWebDriver::create(
-            'http://localhost:9515',
+            $_ENV['DUSK_DRIVER_URL'] ?? 'http://localhost:9515',
             DesiredCapabilities::chrome()
                 ->setCapability(
                     ChromeOptions::CAPABILITY,
