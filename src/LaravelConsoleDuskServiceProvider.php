@@ -26,6 +26,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider implements Defer
             Browser::$baseUrl = config('app.url');
             Browser::$storeScreenshotsAt = $this->getPath(config('laravel-console-dusk.paths.screenshots'));
             Browser::$storeConsoleLogAt = $this->getPath(config('laravel-console-dusk.paths.log'));
+            Browser::$storeSourceAt = $this->getPath(config('laravel-console-dusk.paths.source'));
 
             Command::macro('browse', function ($callback) use ($manager) {
                 $manager->browse($this, $callback);
