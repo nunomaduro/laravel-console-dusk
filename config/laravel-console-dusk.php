@@ -30,6 +30,9 @@ return [
     | --------------------------------------------------------------------------
     |
     | Here you may pass options to the browser driver being automated.
+    |
+    | A list of available Chromium command line switches is available at
+    | https://peter.sh/experiments/chromium-command-line-switches/
     */
     'driver' => [
         'chrome' => [
