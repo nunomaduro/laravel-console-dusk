@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": "^7.2.5|^8.0",
-        "laravel/dusk": "^5.11|^6.0",
+        "laravel/dusk": "^5.11|^6.0|^7.0",
         "illuminate/console": "^6.0|^7.0|^8.0|^9.0",
         "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
         "nunomaduro/laravel-console-task": "^1.7"
