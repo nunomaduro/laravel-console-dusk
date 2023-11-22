@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  <a href="https://styleci.io/repos/127344168"><img src="https://styleci.io/repos/127344168/shield" alt="StyleCI Status"></img></a>
-  <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://poser.pugx.org/nunomaduro/laravel-console-dusk/v/stable.svg" alt="Latest Stable Version"></a>
-  <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://poser.pugx.org/nunomaduro/laravel-console-dusk/license.svg" alt="License"></a>
+  <a href="https://github.com/nunomaduro/laravel-console-dusk/actions/workflows/static.yml"><img src="https://img.shields.io/github/actions/workflow/status/nunomaduro/laravel-console-dusk/static.yml?branch=master&style=flat-square&label=static analysis" alt="Static Analysis"></img></a>
+  <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://img.shields.io/packagist/v/nunomaduro/laravel-console-dusk?style=flat-square" alt="Latest Stable Version"></a>
+  <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://img.shields.io/packagist/l/nunomaduro/laravel-console-dusk?style=flat-square" alt="License"></a>
 </p>
 
 ## About Laravel Console Dusk
