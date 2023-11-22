@@ -1,0 +1,28 @@
+name: Static Analysis
+
+on: [push]
+
+jobs:
+  static:
+    name: Static Tests
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: 8.1
+        coverage: none
+
+    - name: Install Dependencies
+      run: composer update --prefer-stable --no-interaction --no-progress --ansi
+
+    - name: Style
+      run: composer test:lint

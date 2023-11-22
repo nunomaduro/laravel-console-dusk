@@ -20,6 +20,9 @@
         "illuminate/support": "^9.0|^10.0",
         "nunomaduro/laravel-console-task": "^1.8"
     },
+    "require-dev": {
+        "laravel/pint": "^1.13"
+    },
     "autoload": {
         "psr-4": {
             "NunoMaduro\\LaravelConsoleDusk\\": "src/"
@@ -28,6 +31,13 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
+    },
+    "scripts": {
+        "lint": "pint --ansi",
+        "test:lint": "pint --test --ansi",
+        "test": [
+            "@test:lint"
+        ]
     },
     "extra": {
         "laravel": {
