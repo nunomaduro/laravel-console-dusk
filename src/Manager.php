@@ -46,8 +46,8 @@ class Manager implements ManagerContract
         }
     }
 
-    /** @return Collection<ConsoleBrowserContract> */
-    protected function createBrowsers($command, $callback): Collection
+    /** @return Collection<int, ConsoleBrowserContract> */
+    protected function createBrowsers(Command $command, Closure $callback): Collection
     {
         $browsers = collect();
 
