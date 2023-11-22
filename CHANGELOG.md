@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [1.12.0] - 2023-11-22
+
+### Added
+- Add support for passing Chrome Driver options ([#27](https://github.com/nunomaduro/laravel-console-dusk/pull/27) and [#29](https://github.com/nunomaduro/laravel-console-dusk/pull/29))
+- Add support for multiple browsers ([#21](https://github.com/nunomaduro/laravel-console-dusk/pull/21))
+
 ## [1.11.0] - 2023-01-11
 
 ### Added
