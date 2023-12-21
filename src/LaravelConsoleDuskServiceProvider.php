@@ -5,16 +5,15 @@ declare(strict_types=1);
 namespace NunoMaduro\LaravelConsoleDusk;
 
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Console\ChromeDriverCommand;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
-class LaravelConsoleDuskServiceProvider extends ServiceProvider
+class LaravelConsoleDuskServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    protected $defer = true;
-
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
