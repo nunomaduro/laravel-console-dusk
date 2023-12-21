@@ -20,7 +20,7 @@ class Manager implements ManagerContract
 
     protected $browserFactory;
 
-    public function __construct(DriverContract $driver = null, ConsoleBrowserFactoryContract $browserFactory = null)
+    public function __construct(?DriverContract $driver = null, ?ConsoleBrowserFactoryContract $browserFactory = null)
     {
         $this->driver = $driver ?: new Chrome();
         $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory();
