@@ -17,7 +17,7 @@ class ConsoleBrowser implements ConsoleBrowserContract
 
     protected $inSecret = false;
 
-    public function __construct(Command $command, Browser $browser)
+    public function __construct(Command|null $command, Browser $browser)
     {
         $this->command = $command;
         $this->browser = $browser;
@@ -39,6 +39,15 @@ class ConsoleBrowser implements ConsoleBrowserContract
     {
         $description = $this->getHumanReadableMethodDescription($name, $arguments);
 
+        if ($this->command) {
+            return $this->executeInConsole($description, $name, $arguments);
+        } else {
+            return $this->executeNoConsole($name, $arguments);
+        }
+    }
+
+    protected function executeInConsole($description, $name, $arguments)
+    {
         $exception = null;
         $result = null;
 
@@ -55,6 +64,13 @@ class ConsoleBrowser implements ConsoleBrowserContract
         if ($exception !== null) {
             throw $exception;
         }
+
+        return $result instanceof Browser ? $this : $result;
+    }
+
+    protected function executeNoConsole($name, $arguments)
+    {
+        $result = call_user_func_array([$this->browser, $name], $arguments);
 
         return $result instanceof Browser ? $this : $result;
     }
