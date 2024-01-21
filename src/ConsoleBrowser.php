@@ -71,6 +71,7 @@ class ConsoleBrowser implements ConsoleBrowserContract
     protected function executeNoConsole($name, $arguments)
     {
         $result = call_user_func_array([$this->browser, $name], $arguments);
+
         return $result instanceof Browser ? $this : $result;
     }
 
