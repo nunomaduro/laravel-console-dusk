@@ -26,7 +26,7 @@ class Manager implements ManagerContract
         $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory();
     }
 
-    public function browse(Command $command, Closure $callback): void
+    public function browse(Command|null $command, Closure $callback): void
     {
         $this->driver->open();
 
@@ -46,8 +46,13 @@ class Manager implements ManagerContract
         }
     }
 
+    public function browseWithoutCommand(Closure $callback): void
+    {
+        $this->browse(null, $callback);
+    }
+
     /** @return Collection<int, ConsoleBrowserContract> */
-    protected function createBrowsers(Command $command, Closure $callback): Collection
+    protected function createBrowsers(Command|null $command, Closure $callback): Collection
     {
         $browsers = collect();
 

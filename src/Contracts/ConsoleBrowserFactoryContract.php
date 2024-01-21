@@ -9,5 +9,5 @@ use NunoMaduro\LaravelConsoleDusk\Contracts\Drivers\DriverContract;
 
 interface ConsoleBrowserFactoryContract
 {
-    public function make(Command $command, DriverContract $driver): ConsoleBrowserContract;
+    public function make(Command|null $command, DriverContract $driver): ConsoleBrowserContract;
 }
