@@ -14,14 +14,14 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "laravel/dusk": "^7.0|^8.0",
-        "illuminate/console": "^9.0|^10.0",
-        "illuminate/support": "^9.0|^10.0",
-        "nunomaduro/laravel-console-task": "^1.8"
+        "php": "^8.2",
+        "laravel/dusk": "^8.2",
+        "illuminate/console": "^11.4",
+        "illuminate/support": "^11.4",
+        "nunomaduro/laravel-console-task": "^1.9"
     },
     "require-dev": {
-        "laravel/pint": "^1.13"
+        "laravel/pint": "^1.15.1"
     },
     "autoload": {
         "psr-4": {
