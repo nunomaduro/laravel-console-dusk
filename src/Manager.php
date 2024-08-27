@@ -22,8 +22,8 @@ class Manager implements ManagerContract
 
     public function __construct(?DriverContract $driver = null, ?ConsoleBrowserFactoryContract $browserFactory = null)
     {
-        $this->driver = $driver ?: new Chrome();
-        $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory();
+        $this->driver = $driver ?: new Chrome;
+        $this->browserFactory = $browserFactory ?: new ConsoleBrowserFactory;
     }
 
     public function browse(Command $command, Closure $callback): void

@@ -39,7 +39,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider implements Defer
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-console-dusk.php', 'laravel-console-dusk');
 
         $this->app->bind(ManagerContract::class, function ($app) {
-            return new Manager();
+            return new Manager;
         });
 
         $this->commands([

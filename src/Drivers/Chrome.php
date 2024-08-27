@@ -32,7 +32,7 @@ class Chrome implements DriverContract
 
     public function getDriver()
     {
-        $options = (new ChromeOptions())->addArguments(
+        $options = (new ChromeOptions)->addArguments(
             array_filter(array_merge(
                 config('laravel-console-dusk.driver.chrome.options', []),
                 [$this->runHeadless()]

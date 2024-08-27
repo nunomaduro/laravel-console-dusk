@@ -21,7 +21,7 @@
         "nunomaduro/laravel-console-task": "^1.9"
     },
     "require-dev": {
-        "laravel/pint": "^1.15.1"
+        "laravel/pint": "^1.17"
     },
     "autoload": {
         "psr-4": {
