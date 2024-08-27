@@ -17,7 +17,7 @@ class Chrome implements DriverContract
 
     public function open(): void
     {
-        static::startChromeDriver();
+        static::startChromeDriver(['--port=9515']);
     }
 
     public function close(): void
