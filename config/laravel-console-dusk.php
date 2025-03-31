@@ -17,6 +17,16 @@ return [
 
     /*
     | --------------------------------------------------------------------------
+    | Always Available Mode
+    | --------------------------------------------------------------------------
+    |
+    | Make Laravel Console Dusk available even when not running in the context
+    | of an Artisan command (e.g. from a queue worker).
+    */
+    'always_boot' => env('LCD_ALWAYS_BOOT', false),
+
+    /*
+    | --------------------------------------------------------------------------
     | Headless Mode
     | --------------------------------------------------------------------------
     |

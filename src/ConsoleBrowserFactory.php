@@ -17,7 +17,7 @@ class ConsoleBrowserFactory implements ConsoleBrowserFactoryContract
 
     protected $driver;
 
-    public function make(Command $command, DriverContract $driver): ConsoleBrowserContract
+    public function make(Command|null $command, DriverContract $driver): ConsoleBrowserContract
     {
         $this->driver = $driver;
 
