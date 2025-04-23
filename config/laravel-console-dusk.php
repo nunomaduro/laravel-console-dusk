@@ -16,6 +16,20 @@ return [
     ],
 
     /*
+    |--------------------------------------------------------------------------
+    | Laravel Dusk Chrome Driver Path
+    |--------------------------------------------------------------------------
+    |
+    | You may override chrome driver path, for instance if you are using
+    | laravel dusk while building a standalone application. If you don't set
+    | (or set to null) this config, the default path will be used.
+    |
+    | In your .env file, you can set this value to "auto" to install the chrome
+    | driver alongside your phar file (if any), or else to the default path.
+    */
+    'chrome_driver_path' => env('CONSOLE_DUSK_DRIVER_PATH'),
+
+    /*
     | --------------------------------------------------------------------------
     | Headless Mode
     | --------------------------------------------------------------------------
