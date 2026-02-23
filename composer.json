@@ -15,13 +15,13 @@
     ],
     "require": {
         "php": "^8.2",
-        "laravel/dusk": "^8.2",
-        "illuminate/console": "^11.4|^12.0",
-        "illuminate/support": "^11.4|^12.0",
+        "laravel/dusk": "^8.3",
+        "illuminate/console": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
         "nunomaduro/laravel-console-task": "^1.9"
     },
     "require-dev": {
-        "laravel/pint": "^1.21"
+        "laravel/pint": "^1.27"
     },
     "autoload": {
         "psr-4": {
