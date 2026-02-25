@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\Browser;
-use Laravel\Dusk\Console\ChromeDriverCommand;
+use NunoMaduro\LaravelConsoleDusk\Console\ChromeDriverCommand;
 use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
 
 class LaravelConsoleDuskServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -17,6 +17,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider implements Defer
     public function boot(): void
     {
         if ($this->app->runningInConsole()) {
+
             $this->publishes([
                 __DIR__.'/../config/laravel-console-dusk.php' => config_path('laravel-console-dusk.php'),
             ], 'config');
