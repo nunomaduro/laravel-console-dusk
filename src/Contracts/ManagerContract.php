@@ -9,5 +9,5 @@ use Illuminate\Console\Command;
 
 interface ManagerContract
 {
-    public function browse(Command $command, Closure $callback): void;
+    public function browse(Command|null $command, Closure $callback): void;
 }
