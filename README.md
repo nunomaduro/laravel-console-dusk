@@ -6,6 +6,7 @@
   <a href="https://github.com/nunomaduro/laravel-console-dusk/actions/workflows/static.yml"><img src="https://img.shields.io/github/actions/workflow/status/nunomaduro/laravel-console-dusk/static.yml?branch=master&style=flat-square&label=static analysis" alt="Static Analysis"></img></a>
   <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://img.shields.io/packagist/v/nunomaduro/laravel-console-dusk?style=flat-square" alt="Latest Stable Version"></a>
   <a href="https://packagist.org/packages/nunomaduro/laravel-console-dusk"><img src="https://img.shields.io/packagist/l/nunomaduro/laravel-console-dusk?style=flat-square" alt="License"></a>
+  <a href="https://youtube.com/@nunomaduro?sub_confirmation=1"><img alt="YouTube Channel Subscribers" src="https://img.shields.io/youtube/channel/subscribers/UCO_hYZF2gb_CyG5sA7ArlGg?style=flat&label=youtube&color=brightgreen"></a>
 </p>
 
 ## About Laravel Console Dusk
