@@ -11,7 +11,7 @@
 
 ## About Laravel Console Dusk
 
-Laravel Console Dusk was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and allows the usage of [Laravel Dusk](https://github.com/laravel/dusk) in Laravel/Laravel Zero artisan commands.
+Laravel Console Dusk was created by, and is maintained by [Nuno Maduro](https://github.com/nunomaduro), and allows the usage of [Laravel Dusk](https://github.com/laravel/dusk) in Laravel/Laravel Zero artisan commands, as well as in queued jobs.
 
 ## Installation
 
@@ -26,6 +26,7 @@ composer require nunomaduro/laravel-console-dusk
 The package provide a config file that allows you to configure some options.
 ```php
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Laravel Console Dusk Paths
@@ -35,8 +36,19 @@ return [
     */
     'paths' => [
         'screenshots' => storage_path('laravel-console-dusk/screenshots'),
-        'log'         => storage_path('laravel-console-dusk/log'),
+        'log' => storage_path('laravel-console-dusk/log'),
+        'source' => storage_path('laravel-console-dusk/source'),
     ],
+
+    /*
+    | --------------------------------------------------------------------------
+    | Always Available Mode
+    | --------------------------------------------------------------------------
+    |
+    | Make Laravel Console Dusk available even when not running in the context
+    | of an Artisan command (e.g. from a queue worker).
+    */
+    'always_boot' => env('LCD_ALWAYS_BOOT', false),
 
     /*
     | --------------------------------------------------------------------------
@@ -76,6 +88,10 @@ php artisan vendor:publish --provider="NunoMaduro\LaravelConsoleDusk\LaravelCons
 
 ## Usage
 
+Check how use [Laravel Dusk here](https://github.com/laravel/dusk).
+
+### Usage in an Artisan command
+
 ```php
 class VisitLaravelZeroCommand extends Command
 {
@@ -87,6 +103,42 @@ class VisitLaravelZeroCommand extends Command
     public function handle()
     {
         $this->browse(function ($browser) {
+            $browser->visit('http://laravel-zero.com')
+                ->assertSee('100% Open Source');
+        });
+    }
+}
+```
+
+### Usage in a job
+
+Ensure that the `laravel-console-dusk.always_register` configuration setting is set to `true` (either
+in your config file, or through the `LCD_ALWAYS_REGISTER` environment variable).  Then,
+in your job (or wherever else you wish to use Laravel-Console-Dusk), you can resolve the 
+manager and execute as follows:
+
+```php
+namespace App\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use NunoMaduro\LaravelConsoleDusk\ConsoleBrowser;
+use NunoMaduro\LaravelConsoleDusk\Contracts\ManagerContract;
+
+class MyDemoJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public function __construct()
+    {
+    }
+
+    public function handle(): void
+    {
+        app(ManagerContract::class)->browseWithoutCommand(function (ConsoleBrowser $browser) {
             $browser->visit('http://laravel-zero.com')
                 ->assertSee('100% Open Source');
         });

@@ -16,7 +16,7 @@ class LaravelConsoleDuskServiceProvider extends ServiceProvider implements Defer
 {
     public function boot(): void
     {
-        if ($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole() || config('laravel-console-dusk.always_boot')) {
             $this->publishes([
                 __DIR__.'/../config/laravel-console-dusk.php' => config_path('laravel-console-dusk.php'),
             ], 'config');
